@@ -20,4 +20,12 @@ describe('FooterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have a text indicating the name of app', ()=>{
+    expect(component.appName).toBe("Esse Eu Já Li ©  - 2022");
+  });
+
+  it('should have the copyright text', ()=>{
+    expect(component.copyrightInfo).toBe("All rights reserved to Instituto Tecnológico da Aeronáutica and Eron Alves")
+  });
 });

@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
+  appName:string = '';
+  copyrightInfo:string = '';
+
   constructor() { }
 
   ngOnInit(): void {
+    this.appName = "Esse Eu Já Li ©  - 2022";
+    this.copyrightInfo = "All rights reserved to Instituto Tecnológico da Aeronáutica and Eron Alves"
   }
 
 }
