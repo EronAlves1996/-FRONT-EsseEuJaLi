@@ -6,17 +6,21 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
+import { CatalogComponent } from './catalog/catalog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    CatalogComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

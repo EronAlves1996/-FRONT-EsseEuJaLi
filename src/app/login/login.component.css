@@ -1,0 +1,36 @@
+.outer-container {
+    background-color: #F0EFF4;
+}
+
+input::placeholder, label {
+    color: #B9B4CC;
+    font-size: 18px;
+}
+
+button {
+    background-color: #1A81EF; 
+    font-size:20px; 
+    border-radius: 0px;
+}
+
+button:hover {
+    background-color: #083D77;
+}
+
+a{ 
+    color: #02847B; 
+}
+
+a:hover {
+    color: #04c5b8;
+}
+
+@media (max-width: 1000px) {
+    .hidden-on-diminished-screens{
+        display: none;
+    }
+    .login-form {
+        width: 100% !important;
+        align-self: center !important;
+    }
+}

@@ -1,1 +1,19 @@
-<p>login works!</p>
+<div class="d-flex container-fluid outer-container">
+    <div class="img-container w-50 hidden-on-diminished-screens">
+        <img src="" alt="">
+    </div>
+    <div class="login-form d-flex flex-column justify-content-center align-items-center w-50 py-5">
+        <img src="../../assets/images/logo.png" alt="Logo de Esse eu já li!" class="img-fluid mx-auto logo" style="width: 35%; transform:translatex(5px);">
+        <p style="font-size:20px" class="my-4">Comece a coletar seus pontos!!!</p>
+        <form action="" class="d-flex flex-column w-50 mt-4">
+            <div class="form-floating mb-3">
+                <input class="form-control" name="email" placeholder="Email" type="email" [(ngModel)]="loginInfo.email" #email="ngModel" required/><label for="email">E-mail</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input class="form-control" name="pswd" placeholder="Senha" type="password" [(ngModel)]="loginInfo.password" #pswd="ngModel" required/><label for="pswd">Senha</label>
+            </div>
+            <button type="submit" class="btn btn-primary w-50 align-self-center mt-3" [disabled]="email.invalid || pswd.invalid" (click)="onSubmit()">Entrar</button>
+        </form>
+        <a href="" class="mt-2" style="text-decoration: none">Esqueci minha senha</a>
+    </div>
+</div>
