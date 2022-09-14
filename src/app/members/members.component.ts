@@ -3,20 +3,19 @@ import { ActivatedRoute } from '@angular/router';
 import { RouterServiceService } from '../services/router-service.service';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  selector: 'app-members',
+  templateUrl: './members.component.html',
+  styleUrls: ['./members.component.css']
 })
-export class NavbarComponent implements OnInit {
-
-  route: string = '';
+export class MembersComponent implements OnInit {
 
   constructor(
+    private ar: ActivatedRoute,
     private routerServ: RouterServiceService
-  ) { }
+    ) { }
 
   ngOnInit(): void {
-    this.routerServ.getActURL().subscribe(route => this.route = route);
+    this.ar.url.subscribe(n => this.routerServ.injectURL(n[0].path));
   }
 
 }

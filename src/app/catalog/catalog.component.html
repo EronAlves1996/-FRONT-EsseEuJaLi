@@ -1,1 +1,8 @@
-<p>catalog works!</p>
+<div class="d-flex flex-wrap p-5 align-items-center" style="margin: 0 5%">
+    <div class="col-3 mx-auto my-3" style="width:21%" *ngFor="let book of books">
+        <figure class="d-flex flex-column figure">
+            <img [src]="book.img" [alt]="book.title" class="figure-img img-fluid">
+            <figcaption class="figure-caption text-center" style="font-size:1.2vw">{{book.title}}</figcaption>
+        </figure>
+    </div>
+</div>
