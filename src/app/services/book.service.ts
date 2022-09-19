@@ -11,7 +11,7 @@ export class BookService {
   private url: string = "https://www.googleapis.com/books/v1/volumes?key=AIzaSyB13cqdwanOGh_UcPJR04luUaT-iEXcRrY&";
   constructor(private http: HttpClient) { }
 
-  getBooks(): Observable<Search> {
-    return this.http.get<Search>(this.url + "q=random");
+  search(searchParameter:string): Observable<Search> {
+    return this.http.get<Search>(this.url + "q=" + searchParameter + "&maxResults=20");
   }
 }

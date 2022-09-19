@@ -10,15 +10,22 @@ import { Book } from '../shared/book';
 export class CatalogComponent implements OnInit {
 
   books: Book[] = [];
+  searchBook:string = ''
 
   constructor(
     private bookService:BookService
   ) { }
 
   ngOnInit(): void {
-    this.bookService.getBooks().subscribe(searchResult => {
+    this.bookService.search("random").subscribe(searchResult => {
       this.books = searchResult.items;
     })
+  }
+
+  search(): void{
+    this.bookService.search(encodeURI(this.searchBook.replace(' ', '+').toLocaleLowerCase())).subscribe(searchResult=> {
+      this.books = searchResult.items.filter(n => n.volumeInfo.imageLinks);
+    });
   }
 
 }
