@@ -27,14 +27,15 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.ar.url.subscribe(route => this.routeServ.injectURL(''));
     this.userService.verifyLogin().subscribe((user) => {
-      this.userService.user = <User> user;
+      this.userService.setUser((<{body:User}>user).body);
       this.router.navigate(['/memberarea']);
-    });
+    })
   }
 
   onSubmit(): void {
     this.userService.login(this.loginInfo.email, this.loginInfo.password).subscribe(user => {
-      this.userService.user = user;
+      this.userService.setUser(user);
+      console.log(user);
       this.router.navigate(['/memberarea']);
     });
   }
