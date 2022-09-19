@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { User } from '../shared/user';
 
 @Injectable({
@@ -13,22 +14,15 @@ export class UserServiceService {
   constructor(private http:HttpClient,
     private router:Router) { }
 
-  login(email:string, password:string) {
+  login(email:string, password:string): Observable<User> {
     let header:HttpHeaders = new HttpHeaders({
       ["Authorization"]: btoa(email.concat(":", password))
     });
-    this.http.get<User>("http://localhost:8080/api/login/", {headers: header, withCredentials: true}).subscribe(
-        response => {
-          this.user = response;
-          this.router.navigate(["/memberarea"]);
-        }
-    );
+    return this.http.get<User>("http://localhost:8080/api/login/", {headers: header, withCredentials: true});
   }
 
-  verifyLogin(): void{
-    this.http.get<unknown>("http://localhost:8080/api/validate/", {observe: 'response', withCredentials:true}).subscribe(response => {
-      if (response.status === 200) this.router.navigate(["/memberarea"]);
-    });
+  verifyLogin(): Observable<unknown>{
+    return this.http.get<unknown>("http://localhost:8080/api/validate/", {observe: 'response', withCredentials:true});
   }
 }
 

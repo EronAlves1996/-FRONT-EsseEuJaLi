@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RouterServiceService } from '../services/router-service.service';
 import { UserServiceService } from '../services/user-service.service';
 import { LoginInfo } from '../shared/login-info';
+import { User } from '../shared/user';
 
 @Component({
   selector: 'app-login',
@@ -25,11 +26,17 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.ar.url.subscribe(route => this.routeServ.injectURL(''));
-    this.userService.verifyLogin();
+    this.userService.verifyLogin().subscribe((user) => {
+      this.userService.user = <User> user;
+      this.router.navigate(['/memberarea']);
+    });
   }
 
   onSubmit(): void {
-    this.userService.login(this.loginInfo.email, this.loginInfo.password);
+    this.userService.login(this.loginInfo.email, this.loginInfo.password).subscribe(user => {
+      this.userService.user = user;
+      this.router.navigate(['/memberarea']);
+    });
   }
 
 }
