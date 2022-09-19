@@ -1,9 +1,17 @@
-export class Book {
-    img: string = '';
+export class Search {
+    totalItems: number = 0;
+    items: Book[] = [];
+}
+
+export class VolumeInfo {
     title: string = '';
+    subtitle: string = '';
+    publishDate: string = '';
+    categories: Array<string> = [];
+    imageLinks: {thumbnail:string} = {thumbnail: ''};
+}
+
+export class Book {
     id: string = '';
-    description: string = '';
-    pages: number = 0;
-    year: number = 0;
-    points: number = 0;
+    volumeInfo: VolumeInfo = new VolumeInfo();
 }

@@ -10,4 +10,5 @@ a {
 
 a:hover {
     color: #31FCEE !important;
+    cursor: pointer;
 }

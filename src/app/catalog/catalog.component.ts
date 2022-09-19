@@ -16,7 +16,9 @@ export class CatalogComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.books = this.bookService.getBooks();
+    this.bookService.getBooks().subscribe(searchResult => {
+      this.books = searchResult.items;
+    })
   }
 
 }

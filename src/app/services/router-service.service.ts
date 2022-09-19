@@ -18,8 +18,4 @@ export class RouterServiceService {
   getActURL(): Observable<string> {
     return this.actURL.asObservable();
   }
-
-  goToHome(): void {
-    this.router.navigateByUrl(this.router.parseUrl("/other"));
-  }
 }
