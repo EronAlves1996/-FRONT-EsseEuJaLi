@@ -1,6 +1,26 @@
 <div class="d-flex flex-column">
     <div class="d-flex w-25 align-self-center">
-        <input type="text" [(ngModel)]="searchBook"><a (click)="search()">Buscar</a>
+        <input type="text" [(ngModel)]="searchBook" (keydown)="searchOnEnter($event)"><a (click)="search()">Buscar</a>
+    </div>
+    <div class="align-self-center">
+        <ul class="d-flex pagination">
+            <li class="page-item">
+                <a class="page-link" (click)="goToIndexInSearch(actualPage-2)" *ngIf="actualPage!==1">
+                    Anterior
+                </a>
+            </li>
+            <li *ngFor="let number of totalPages" class="page-item">
+                <a class="page-link" (click)="goToIndexInSearch(number-1)" [ngStyle]="{'font-weight':number == actualPage ? 'bold' : ''}"
+                *ngIf="(number > actualPage-5 && (number < actualPage+5 || number < 10))">
+                    {{number}}
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" (click)="goToIndexInSearch(actualPage)">
+                    Próximo
+                </a>
+            </li>
+        </ul>
     </div>
     <div class="d-flex flex-wrap p-5 align-items-center" style="margin: 0 5%">
         <div class="col-3 mx-auto my-3" style="width:17%" *ngFor="let book of books">
@@ -11,9 +31,32 @@
                 <figcaption class="figure-caption text-center" style="font-size:1.2vw">{{book.volumeInfo.title}}
                 </figcaption>
             </figure>
-            <ul *ngFor="let categorie of book.volumeInfo.categories">
-                <span>{{categorie}}</span>
+            <ul>
+                <li  *ngFor="let categorie of book.volumeInfo.categories">
+                    <span>{{categorie}}</span>
+                </li>
             </ul>
         </div>
+    </div>
+
+    <div class="align-self-center">
+        <ul class="d-flex pagination">
+            <li class="page-item">
+                <a class="page-link" (click)="goToIndexInSearch(actualPage-2)" *ngIf="actualPage!==1">
+                    Anterior
+                </a>
+            </li>
+            <li *ngFor="let number of totalPages" class="page-item">
+                <a class="page-link" (click)="goToIndexInSearch(number-1)" [ngStyle]="{'font-weight':number == actualPage ? 'bold' : ''}"
+                *ngIf="(number > actualPage-5 && (number < actualPage+5 || number < 10))">
+                    {{number}}
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" (click)="goToIndexInSearch(actualPage)">
+                    Próximo
+                </a>
+            </li>
+        </ul>
     </div>
 </div>
