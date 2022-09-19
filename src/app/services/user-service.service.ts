@@ -23,6 +23,10 @@ export class UserServiceService {
     return this.http.get<unknown>("http://localhost:8080/api/validate/", {observe: 'response', withCredentials:true});
   }
 
+  logout(): Observable<unknown>{
+    return this.http.delete<unknown>("http://localhost:8080/api/logout", {withCredentials: true});
+  }
+
   getUser(): Observable<User>{
     return this.user;
   }

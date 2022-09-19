@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RouterServiceService } from '../services/router-service.service';
 import { UserServiceService } from '../services/user-service.service';
+import { User } from '../shared/user';
 
 @Component({
   selector: 'app-navbar',
@@ -15,12 +16,20 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private routerServ: RouterServiceService,
-    private userServ: UserServiceService
+    private userServ: UserServiceService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.routerServ.getActURL().subscribe(route => this.route = route);
     this.userServ.getUser().subscribe(user => this.userName = user.name);
+  }
+
+  logout(): void {
+    this.userServ.logout().subscribe(n => {
+      this.userServ.setUser(new User());
+      this.router.navigate(['/']);
+    })
   }
 
 }
