@@ -10,7 +10,7 @@ export class UserServiceService {
 
   user: Subject<User> = new Subject<User>();
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {  }
 
   login(email:string, password:string): Observable<User> {
     let header:HttpHeaders = new HttpHeaders({

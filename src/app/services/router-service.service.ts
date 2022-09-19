@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 
 @Injectable({
@@ -8,7 +9,7 @@ export class RouterServiceService {
 
   private actURL: Subject<string> = new Subject<string>;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   injectURL(urlSeg: string){
     this.actURL.next(urlSeg);
@@ -16,5 +17,9 @@ export class RouterServiceService {
 
   getActURL(): Observable<string> {
     return this.actURL.asObservable();
+  }
+
+  goToHome(): void {
+    this.router.navigateByUrl(this.router.parseUrl("/other"));
   }
 }
