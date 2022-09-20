@@ -18,13 +18,13 @@ export class ValidationGuard implements CanActivate, CanActivateChild {
 
     return this.userServ.verifyLogin().pipe(
       map(user => {
-        this.userServ.setUser((<{body: User }> user).body);
+        this.userServ.setUser((<{ body: User }>user).body);
         return true;
-      }), catchError(err=> {
+      }), catchError(err => {
         this.router.navigate(['/']);
         return of(false);
       })
-      )
+    )
   }
 
   canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {

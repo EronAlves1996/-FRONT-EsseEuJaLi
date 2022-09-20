@@ -1,7 +1,15 @@
 <div class="d-flex flex-column">
-    <div class="d-flex w-25 align-self-center">
-        <input type="text" [(ngModel)]="searchBook" (keydown)="searchOnEnter($event)"><a (click)="search()">Buscar</a>
+    <div class="d-flex flex-column align-items-center w-25 align-self-center">
+        <label for="search" class="align-self-start" style="margin-left: 17%; margin-bottom: 0.7rem; font-size:115%">Busca</label>
+        <div class="form-inline d-flex">
+            <div class="form-group mx-sm-3 mb-2">
+                <input type="text" class="form-control" id="search" placeholder="Busca" (keydown)="searchOnEnter($event)"
+                    [(ngModel)]="searchBook">
+            </div>
+            <button type="button" class="btn btn-primary mb-2" (click)="search()">Buscar</button>
+        </div>
     </div>
+    <hr>
     <div class="align-self-center">
         <ul class="d-flex pagination">
             <li class="page-item">
@@ -10,8 +18,9 @@
                 </a>
             </li>
             <li *ngFor="let number of totalPages" class="page-item">
-                <a class="page-link" (click)="goToIndexInSearch(number-1)" [ngStyle]="{'font-weight':number == actualPage ? 'bold' : ''}"
-                *ngIf="(number > actualPage-5 && (number < actualPage+5 || number < 10))">
+                <a class="page-link" (click)="goToIndexInSearch(number-1)"
+                    [ngStyle]="{'font-weight':number == actualPage ? 'bold' : ''}"
+                    *ngIf="(number > actualPage-5 && (number < actualPage+5 || number < 10))">
                     {{number}}
                 </a>
             </li>
@@ -27,12 +36,13 @@
             <figure class="d-flex flex-column figure">
                 <img [src]="book.volumeInfo.imageLinks.thumbnail" [alt]="book.volumeInfo.title"
                     class="figure-img img-fluid" *ngIf="book.volumeInfo.imageLinks">
-                <img *ngIf="!book.volumeInfo.imageLinks" src="../../assets/images/no_cover_thumb.gif" alt="No image available">
+                <img *ngIf="!book.volumeInfo.imageLinks" src="../../assets/images/no_cover_thumb.gif"
+                    alt="No image available">
                 <figcaption class="figure-caption text-center" style="font-size:1.2vw">{{book.volumeInfo.title}}
                 </figcaption>
             </figure>
             <ul>
-                <li  *ngFor="let categorie of book.volumeInfo.categories">
+                <li *ngFor="let categorie of book.volumeInfo.categories">
                     <span>{{categorie}}</span>
                 </li>
             </ul>
@@ -47,8 +57,9 @@
                 </a>
             </li>
             <li *ngFor="let number of totalPages" class="page-item">
-                <a class="page-link" (click)="goToIndexInSearch(number-1)" [ngStyle]="{'font-weight':number == actualPage ? 'bold' : ''}"
-                *ngIf="(number > actualPage-5 && (number < actualPage+5 || number < 10))">
+                <a class="page-link" (click)="goToIndexInSearch(number-1)"
+                    [ngStyle]="{'font-weight':number == actualPage ? 'bold' : ''}"
+                    *ngIf="(number > actualPage-5 && (number < actualPage+5 || number < 10))">
                     {{number}}
                 </a>
             </li>
