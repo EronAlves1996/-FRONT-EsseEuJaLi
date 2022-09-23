@@ -18,5 +18,9 @@ export class BookService {
   getBook(bookISBN: string): Observable<Search>{
     return this.http.get<Search>(this.url + "q=isbn:" + bookISBN);
   }
+
+  calculatePoints(pageCount: number): number {
+    return 1 + Math.floor(pageCount/100);
+  }
   
 }

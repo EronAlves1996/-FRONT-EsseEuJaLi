@@ -6,11 +6,13 @@ export class Search {
 export class VolumeInfo {
     title: string = '';
     industryIdentifiers: ISBN[] = [];
+    authors: string[] = [];
     subtitle: string = '';
     publishDate: string = '';
     categories: Array<string> = [];
-    pageCount:number = 0;
-    imageLinks: {thumbnail:string} = {thumbnail: ''};
+    pageCount: number = 0;
+    description: string = '';
+    imageLinks: { thumbnail: string } = { thumbnail: '' };
 }
 
 export class ISBN {

@@ -1,1 +1,17 @@
-<p>book works!</p>
+<div class="d-flex">
+    <img [src]="book.volumeInfo.imageLinks.thumbnail" [alt]="book.volumeInfo.title">
+    <div>
+        <h3>{{book.volumeInfo.title}}</h3>
+        <ul>
+            <li *ngFor="let author of book.volumeInfo.authors">{{author}}</li>
+            <li *ngIf="book.volumeInfo.publishDate">{{book.volumeInfo.publishDate}}</li>
+            <li>{{book.volumeInfo.categories[0]}}</li>
+        </ul>
+        <p>{{book.volumeInfo.description}}</p>
+        <ul>
+            <li>Páginas: {{book.volumeInfo.pageCount}}</li>
+            <li>Vale {{calculatePoints()}} pontos!</li>
+        </ul>
+    </div>
+
+</div>
