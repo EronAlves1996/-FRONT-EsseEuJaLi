@@ -14,4 +14,9 @@ export class BookService {
   search(searchParameter:string, startIndex:number = 0): Observable<Search> {
     return this.http.get<Search>(this.url + encodeURI("q=" + searchParameter + "&maxResults=20&startIndex=" + startIndex));
   }
+
+  getBook(bookISBN: string): Observable<Search>{
+    return this.http.get<Search>(this.url + "q=isbn:" + bookISBN);
+  }
+  
 }

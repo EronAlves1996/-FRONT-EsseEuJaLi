@@ -5,11 +5,16 @@ export class Search {
 
 export class VolumeInfo {
     title: string = '';
+    industryIdentifiers: ISBN[] = [];
     subtitle: string = '';
     publishDate: string = '';
     categories: Array<string> = [];
     pageCount:number = 0;
     imageLinks: {thumbnail:string} = {thumbnail: ''};
+}
+
+export class ISBN {
+    identifier: string = '';
 }
 
 export class Book {

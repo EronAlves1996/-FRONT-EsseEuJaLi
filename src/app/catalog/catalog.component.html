@@ -1,10 +1,11 @@
 <div class="d-flex flex-column">
     <div class="d-flex flex-column align-items-center w-25 align-self-center">
-        <label for="search" class="align-self-start" style="margin-left: 17%; margin-bottom: 0.7rem; font-size:115%">Busca</label>
+        <label for="search" class="align-self-start"
+            style="margin-left: 17%; margin-bottom: 0.7rem; font-size:115%">Busca</label>
         <div class="form-inline d-flex">
             <div class="form-group mx-sm-3 mb-2">
-                <input type="text" class="form-control" id="search" placeholder="Busca" (keydown)="searchOnEnter($event)"
-                    [(ngModel)]="searchBook">
+                <input type="text" class="form-control" id="search" placeholder="Busca"
+                    (keydown)="searchOnEnter($event)" [(ngModel)]="searchBook">
             </div>
             <button type="button" class="btn btn-primary mb-2" (click)="search()">Buscar</button>
         </div>
@@ -32,21 +33,23 @@
         </ul>
     </div>
     <div class="d-flex flex-wrap p-5 align-items-center" style="margin: 0 5%">
-        <div class="col-3 mx-auto my-3" style="width:17%" *ngFor="let book of books">
-            <figure class="d-flex flex-column figure">
-                <img [src]="book.volumeInfo.imageLinks.thumbnail" [alt]="book.volumeInfo.title"
-                    class="figure-img img-fluid" *ngIf="book.volumeInfo.imageLinks">
-                <img *ngIf="!book.volumeInfo.imageLinks" src="../../assets/images/no_cover_thumb.gif"
-                    alt="No image available">
-                <figcaption class="figure-caption text-center" style="font-size:1.2vw">{{book.volumeInfo.title}}
-                </figcaption>
-            </figure>
-            <ul class="list-group">
-                <li *ngFor="let categorie of book.volumeInfo.categories" class="list-group-item">
-                    <span>{{categorie}}</span>
-                </li>
-                <li class="list-group-item" *ngIf="book.volumeInfo.pageCount">Páginas: {{book.volumeInfo.pageCount}}</li>
-            </ul>
+        <div class="col-3 mx-auto my-3 book" style="width:17%" *ngFor="let book of books"
+            [routerLink]="['book', book.volumeInfo.industryIdentifiers[0].identifier]">
+                <figure class="d-flex flex-column figure">
+                    <img [src]="book.volumeInfo.imageLinks.thumbnail" [alt]="book.volumeInfo.title"
+                        class="figure-img img-fluid" *ngIf="book.volumeInfo.imageLinks">
+                    <img *ngIf="!book.volumeInfo.imageLinks" src="../../assets/images/no_cover_thumb.gif"
+                        alt="No image available">
+                    <figcaption class="figure-caption text-center" style="font-size:1.2vw">{{book.volumeInfo.title}}
+                    </figcaption>
+                </figure>
+                <ul class="list-group">
+                    <li *ngFor="let categorie of book.volumeInfo.categories" class="list-group-item">
+                        <span>{{categorie}}</span>
+                    </li>
+                    <li class="list-group-item" *ngIf="book.volumeInfo.pageCount">Páginas: {{book.volumeInfo.pageCount}}
+                    </li>
+                </ul>
         </div>
     </div>
 
