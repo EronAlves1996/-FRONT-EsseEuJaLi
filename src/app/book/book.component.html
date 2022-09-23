@@ -1,17 +1,20 @@
-<div class="d-flex">
-    <img [src]="book.volumeInfo.imageLinks.thumbnail" [alt]="book.volumeInfo.title">
-    <div>
-        <h3>{{book.volumeInfo.title}}</h3>
-        <ul>
-            <li *ngFor="let author of book.volumeInfo.authors">{{author}}</li>
-            <li *ngIf="book.volumeInfo.publishDate">{{book.volumeInfo.publishDate}}</li>
-            <li>{{book.volumeInfo.categories[0]}}</li>
-        </ul>
-        <p>{{book.volumeInfo.description}}</p>
-        <ul>
-            <li>Páginas: {{book.volumeInfo.pageCount}}</li>
-            <li>Vale {{calculatePoints()}} pontos!</li>
-        </ul>
+<div style="font-size: 120%;" class="d-flex justify-content-center">
+    <div class="d-flex w-75 p-5">
+        <img [src]="book.volumeInfo.imageLinks.thumbnail" [alt]="book.volumeInfo.title" class="flex-shrink-0">
+        <div style="font-size:90%; margin-left:2rem; ">
+            <h3>{{book.volumeInfo.title}}</h3>
+            <ul class="d-flex nav justify-content-between">
+                <li class="nav-link disabled" *ngFor="let author of book.volumeInfo.authors">{{author}}</li>
+                <li class="nav-link disabled" *ngIf="book.volumeInfo.publishDate">{{book.volumeInfo.publishDate}}</li>
+                <li class="nav-link disabled">{{book.volumeInfo.categories[0]}}</li>
+            </ul>
+            <p style="font-size: 85%" class="m-2">{{book.volumeInfo.description}}</p>
+            <ul class="d-flex nav justify-content-between">
+                <li class="nav-link disabled" style="color: #02847B !important; font-weight: bold;">Páginas:
+                    {{book.volumeInfo.pageCount}}</li>
+                <li class="nav-link disabled" style="color: #02847B !important; font-weight: bold;margin-right: 50%">Vale
+                    {{calculatePoints()}} pontos!</li>
+            </ul>
+        </div>
     </div>
-
 </div>
