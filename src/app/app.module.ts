@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { CatalogComponent } from './catalog/catalog.component';
 import { MembersComponent } from './members/members.component';
+import { BookComponent } from './book/book.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MembersComponent } from './members/members.component';
     NavbarComponent,
     LoginComponent,
     CatalogComponent,
-    MembersComponent
+    MembersComponent,
+    BookComponent
   ],
   imports: [
     BrowserModule,

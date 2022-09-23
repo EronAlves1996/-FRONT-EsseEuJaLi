@@ -8,6 +8,7 @@ export class VolumeInfo {
     subtitle: string = '';
     publishDate: string = '';
     categories: Array<string> = [];
+    pageCount:number = 0;
     imageLinks: {thumbnail:string} = {thumbnail: ''};
 }
 

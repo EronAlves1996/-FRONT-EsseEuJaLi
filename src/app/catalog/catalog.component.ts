@@ -26,6 +26,7 @@ export class CatalogComponent implements OnInit {
   search(): void{
     this.bookService.search(encodeURI(this.searchBook.replace(' ', '+').toLocaleLowerCase())).subscribe(searchResult=> {
       this.totalPages = []
+      this.actualPage = 1;
       for(let i = 0; i < Math.floor((searchResult.totalItems)/20); i++){
         this.totalPages.push(i+1);
       };

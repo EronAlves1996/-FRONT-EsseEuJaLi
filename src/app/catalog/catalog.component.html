@@ -41,10 +41,11 @@
                 <figcaption class="figure-caption text-center" style="font-size:1.2vw">{{book.volumeInfo.title}}
                 </figcaption>
             </figure>
-            <ul>
-                <li *ngFor="let categorie of book.volumeInfo.categories">
+            <ul class="list-group">
+                <li *ngFor="let categorie of book.volumeInfo.categories" class="list-group-item">
                     <span>{{categorie}}</span>
                 </li>
+                <li class="list-group-item" *ngIf="book.volumeInfo.pageCount">Páginas: {{book.volumeInfo.pageCount}}</li>
             </ul>
         </div>
     </div>
