@@ -11,7 +11,7 @@ import { UserServiceService } from './user-service.service';
 })
 export class BookService {
 
-  private url: string = "https://www.googleapis.com/books/v1/volumes?key=AIzaSyB13cqdwanOGh_UcPJR04luUaT-iEXcRrY&";
+  private url: string = "https://www.googleapis.com/books/v1/volumes?";
   private server: string = "http://localhost:8080/api/";
 
   constructor(private http: HttpClient, private userService: UserServiceService) { }
