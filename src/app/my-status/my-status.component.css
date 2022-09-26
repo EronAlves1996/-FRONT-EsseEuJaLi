@@ -11,3 +11,7 @@ ul {
     background: rgb(3, 181, 170);
     background: linear-gradient(3deg, rgba(3, 181, 170, 0.67) 0%, rgba(3, 181, 170, 0.42) 30%, rgba(3, 181, 170, 0) 85%);
 }
+
+p {
+    margin: 2% 0;
+}

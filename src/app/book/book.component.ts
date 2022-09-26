@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
 import { BookService } from '../services/book.service';
@@ -35,7 +35,6 @@ export class BookComponent implements OnInit {
 
   markAsRead(): void {
     this.bookService.markAsRead(this.bookIsbn, this.book.volumeInfo.categories[0], this.calculatePoints()).subscribe(response => {
-      console.log(response.status);
       response.status === 202 ? this.readed = true : this.readed = false;
     });
   }

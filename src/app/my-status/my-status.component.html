@@ -1,22 +1,41 @@
-<div style="font-size: 120%; padding: 0 10rem" class="d-flex align-self-center flex-column">
-    <h3>Usuário</h3>
-    <nav class="">
+<div style="padding: 0 10rem" class="d-flex align-self-center flex-column">
+    <h3>{{user.name}}</h3>
+    <nav class="" style="font-size: 120%;">
         <ul class="d-flex w-25 justify-content-between m-0 p-0">
             <li class="my-info selected" #myInfo
-                (click)="myInfo.classList.add('selected'); readedBooksEl.classList.remove('selected')">Minhas informações
+                (click)="myInfo.classList.add('selected'); readedBooksEl.classList.remove('selected')">Minhas
+                informações
             </li>
             <li class="readed-books" #readedBooksEl
                 (click)="readedBooksEl.classList.add('selected'); myInfo.classList.remove('selected')">Livros Lidos</li>
         </ul>
     </nav>
     <hr class="m-0">
-    <div *ngIf="myInfo.classList.contains('selected')">
-        <p>Nome: {{user.name}}</p>
-        <p>E-mail: {{user.email}}</p>
-        <p>Pontuação Total: {{ related_points }}</p>
-        <p>Troféus: <span *ngFor="let trophy of trophys">{{trophy}}, </span></p>
+    <div>
+        <div *ngIf="myInfo.classList.contains('selected')" style="font-size: 150%">
+            <p>E-mail: <span style="color: rgb(3, 181, 170)">{{user.email}}</span></p>
+            <p>Pontuação Total: <span style="color: rgb(3, 181, 170)">{{ related_points }}</span> </p>
+            <p>Troféus: <span *ngFor="let trophy of trophys" style="color: rgb(3, 181, 170)">{{trophy}}, </span></p>
+        </div>
+        <div *ngIf="readedBooksEl.classList.contains('selected')">
+            <div *ngFor="let book of readedBooksVar" class="d-flex w-75 p-5 align-self-center">
+                <img [src]="book.volumeInfo.imageLinks.thumbnail" [alt]="book.volumeInfo.title" class="flex-shrink-0">
+                <div style="font-size:90%; margin-left:2rem; ">
+                    <h3>{{book.volumeInfo.title}}</h3>
+                    <ul class="d-flex nav justify-content-between">
+                        <li>Autor(es):</li>
+                        <li class="nav-link disabled" *ngFor="let author of book.volumeInfo.authors">{{author}}</li>
+                    </ul>
+                    <ul class="d-flex nav justify-content-between">
+                        <li>Data de publicação: </li>
+                        <li class="nav-link disabled" *ngIf="book.volumeInfo.publishedDate">
+                            {{book.volumeInfo.publishedDate}}</li>
+                    </ul>
+                    <ul class="d-flex nav justify-content-between">
+                        <li>Categorias:</li>
+                        <li class="nav-link disabled">{{book.volumeInfo.categories[0]}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-    <div *ngIf="readedBooksEl.classList.contains('selected')">
-        <p>Another thing</p>
-    </div>
-</div>

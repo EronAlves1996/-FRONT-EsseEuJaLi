@@ -1,7 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { first, map, Observable } from 'rxjs';
-import { Search } from '../shared/book';
+import { Book, Search } from '../shared/book';
 import { BookReaded } from '../shared/bookReaded';
 import { User } from '../shared/user';
 import { UserServiceService } from './user-service.service';
@@ -34,7 +34,7 @@ export class BookService {
     const actualUser: User = this.userService.getUser();
     return this.http.post<string>(this.server + "readed", JSON.stringify({
       user: actualUser.email,
-      book_id: bookId,
+      book_isbn: bookId,
       categorie: categorie,
       related_points: points
     }), {
