@@ -4,6 +4,7 @@ import { BookComponent } from './book/book.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { LoginComponent } from './login/login.component';
 import { MembersComponent } from './members/members.component';
+import { MyStatusComponent } from './my-status/my-status.component';
 import { ValidationGuard } from './validation.guard';
 
 const routes: Routes = [{
@@ -22,6 +23,10 @@ const routes: Routes = [{
     {
       path: 'book/:isbn',
       component: BookComponent
+    },
+    {
+      path: 'mystatus',
+      component: MyStatusComponent
     }
   ]
 }];

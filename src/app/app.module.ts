@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { CatalogComponent } from './catalog/catalog.component';
 import { MembersComponent } from './members/members.component';
 import { BookComponent } from './book/book.component';
+import { MyStatusComponent } from './my-status/my-status.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { BookComponent } from './book/book.component';
     LoginComponent,
     CatalogComponent,
     MembersComponent,
-    BookComponent
+    BookComponent,
+    MyStatusComponent
   ],
   imports: [
     BrowserModule,
