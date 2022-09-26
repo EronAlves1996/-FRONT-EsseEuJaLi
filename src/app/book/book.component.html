@@ -1,20 +1,25 @@
-<div style="font-size: 120%;" class="d-flex justify-content-center">
-    <div class="d-flex w-75 p-5">
+<div style="font-size: 120%;" class="d-flex flex-column w-100">
+    <div class="d-flex w-75 p-5 align-self-center">
         <img [src]="book.volumeInfo.imageLinks.thumbnail" [alt]="book.volumeInfo.title" class="flex-shrink-0">
         <div style="font-size:90%; margin-left:2rem; ">
             <h3>{{book.volumeInfo.title}}</h3>
             <ul class="d-flex nav justify-content-between">
                 <li class="nav-link disabled" *ngFor="let author of book.volumeInfo.authors">{{author}}</li>
-                <li class="nav-link disabled" *ngIf="book.volumeInfo.publishDate">{{book.volumeInfo.publishDate}}</li>
+                <li class="nav-link disabled" *ngIf="book.volumeInfo.publishedDate">{{book.volumeInfo.publishedDate}}</li>
                 <li class="nav-link disabled">{{book.volumeInfo.categories[0]}}</li>
             </ul>
             <p style="font-size: 85%" class="m-2">{{book.volumeInfo.description}}</p>
             <ul class="d-flex nav justify-content-between">
                 <li class="nav-link disabled" style="color: #02847B !important; font-weight: bold;">Páginas:
                     {{book.volumeInfo.pageCount}}</li>
-                <li class="nav-link disabled" style="color: #02847B !important; font-weight: bold;margin-right: 50%">Vale
+                <li class="nav-link disabled" style="color: #02847B !important; font-weight: bold;margin-right: 50%"
+                    *ngIf="book.volumeInfo.pageCount">Vale
                     {{calculatePoints()}} pontos!</li>
             </ul>
         </div>
+    </div>
+    <div class="d-flex justify-content-end">
+        <button *ngIf="!readed" class="not-readed w-25" style="margin-right: 35%" (click)="markAsRead()">Marcar como lido</button>
+        <button *ngIf="readed" class="readed w-25" style="margin-right: 35%">Esse eu já li!</button>
     </div>
 </div>

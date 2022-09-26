@@ -8,7 +8,8 @@ import { User } from '../shared/user';
 })
 export class UserServiceService {
 
-  user: Subject<User> = new Subject<User>();
+  user: User = new User();
+  userObservable: Subject<User> = new Subject<User>();
 
   constructor(private http:HttpClient) {  }
 
@@ -27,12 +28,17 @@ export class UserServiceService {
     return this.http.delete<unknown>("http://localhost:8080/api/logout", {withCredentials: true});
   }
 
-  getUser(): Observable<User>{
+  getUserObservable(): Observable<User>{
+    return this.userObservable;
+  }
+
+  getUser(): User {
     return this.user;
   }
 
   setUser(user: User) {
-    this.user.next(user);
+    this.userObservable.next(user);
+    this.user = user;
   }
 }
 

@@ -8,7 +8,7 @@ export class VolumeInfo {
     industryIdentifiers: ISBN[] = [];
     authors: string[] = [];
     subtitle: string = '';
-    publishDate: string = '';
+    publishedDate: string = '';
     categories: Array<string> = [];
     pageCount: number = 0;
     description: string = '';

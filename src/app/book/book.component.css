@@ -1,0 +1,19 @@
+.not-readed, .readed {
+    height: 2.5rem;
+    color: #062D57;
+}
+
+.readed{
+    background-color: #46FFD8;
+    border: dotted #02847B 4px;
+    cursor: default;
+}
+
+.not-readed{
+    background-color: #C4BA98;
+    border:none;
+}
+
+.not-readed:hover {
+    opacity: 80%;
+}
