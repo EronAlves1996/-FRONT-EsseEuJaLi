@@ -1,1 +1,19 @@
-<p>my-status works!</p>
+<div style="font-size: 120%; padding: 0 10rem" class="d-flex align-self-center flex-column">
+    <h3>Usuário</h3>
+    <nav class="">
+        <ul class="d-flex w-25 justify-content-between m-0 p-0">
+            <li class="my-info selected" #myInfo (click)="myInfo.classList.add('selected'); readedBooks.classList.remove('selected')">Minhas informações</li>
+            <li class="readed-books" #readedBooks (click)="readedBooks.classList.add('selected'); myInfo.classList.remove('selected')">Livros Lidos</li>
+        </ul>
+    </nav>
+    <hr class="m-0">
+    <div *ngIf="myInfo.classList.contains('selected')">
+        <p>Nome:</p>
+        <p>E-mail:</p>
+        <p>Pontuação Total:</p>
+        <p>Troféus:</p>
+    </div>
+    <div *ngIf="readedBooks.classList.contains('selected')">
+        <p>Another thing</p>
+    </div>
+</div>
