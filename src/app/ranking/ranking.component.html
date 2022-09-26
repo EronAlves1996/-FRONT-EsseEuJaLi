@@ -1,0 +1,21 @@
+<div class="d-flex justify-content-center">
+    <div class="d-flex flex-column justify-content-center w-75">
+        <h3 class="m-auto" style="color: #041D39">Ranking</h3>
+        <table class="my-5 table">
+            <thead>
+                <tr style="color: #36311F">
+                    <th scope="col">Posição</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Pontos</th>
+                </tr>
+            </thead>
+            <tbody style="color:#988A57">
+                <tr *ngFor="let rankingPosition of ranking">
+                    <td scope="col">{{rankingPosition.position}}</td>
+                    <td>{{rankingPosition.user}}</td>
+                    <td>{{rankingPosition.points}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -5,6 +5,7 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { LoginComponent } from './login/login.component';
 import { MembersComponent } from './members/members.component';
 import { MyStatusComponent } from './my-status/my-status.component';
+import { RankingComponent } from './ranking/ranking.component';
 import { ValidationGuard } from './validation.guard';
 
 const routes: Routes = [{
@@ -27,6 +28,10 @@ const routes: Routes = [{
     {
       path: 'mystatus',
       component: MyStatusComponent
+    },
+    {
+      path:'ranking',
+      component: RankingComponent
     }
   ]
 }];

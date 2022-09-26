@@ -12,6 +12,7 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { MembersComponent } from './members/members.component';
 import { BookComponent } from './book/book.component';
 import { MyStatusComponent } from './my-status/my-status.component';
+import { RankingComponent } from './ranking/ranking.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MyStatusComponent } from './my-status/my-status.component';
     CatalogComponent,
     MembersComponent,
     BookComponent,
-    MyStatusComponent
+    MyStatusComponent,
+    RankingComponent
   ],
   imports: [
     BrowserModule,
