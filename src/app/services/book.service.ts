@@ -23,16 +23,19 @@ export class BookService {
     return this.http.get<Search>(this.url + "q=isbn:" + bookISBN);
   }
 
+  //getBooksForUser(): Observable
+
   calculatePoints(pageCount: number): number {
     return 1 + Math.floor(pageCount / 100);
   }
 
-  markAsRead(bookId: string, categorie: string): Observable<HttpResponse<string>> {
+  markAsRead(bookId: string, categorie: string, points: number): Observable<HttpResponse<string>> {
     const actualUser: User = this.userService.getUser();
     return this.http.post<string>(this.server + "readed", JSON.stringify({
       user: actualUser.email,
       book_id: bookId,
-      categorie: categorie
+      categorie: categorie,
+      related_points: points
     }), {
       headers: { "Content-Type": "application/json" }, observe: 'response'
     });

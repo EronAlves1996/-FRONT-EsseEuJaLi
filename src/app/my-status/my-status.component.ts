@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserServiceService } from '../services/user-service.service';
+import { User } from '../shared/user';
 
 @Component({
   selector: 'app-my-status',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyStatusComponent implements OnInit {
 
-  constructor() { }
+  user: User = new User();
+  constructor(private userService: UserServiceService) { }
 
   ngOnInit(): void {
+    this.user = this.userService.getUser();
   }
 
 }

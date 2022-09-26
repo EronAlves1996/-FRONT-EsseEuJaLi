@@ -25,7 +25,7 @@ export class BookComponent implements OnInit {
   getBookInformation(): void {
     this.bookService.getBook(this.bookIsbn).pipe(switchMap(book => {
       this.book = book.items[0];
-      return this.bookService.verifyIfIsRead(book.items[0].id);
+      return this.bookService.verifyIfIsRead(this.bookIsbn);
     })).subscribe(response => this.readed = response.status === 200 ? true : false);
   }
 
@@ -34,8 +34,7 @@ export class BookComponent implements OnInit {
   }
 
   markAsRead(): void {
-    console.log(this.book.id, this.book.volumeInfo.categories[0])
-    this.bookService.markAsRead(this.book.id, this.book.volumeInfo.categories[0]).subscribe(response => {
+    this.bookService.markAsRead(this.bookIsbn, this.book.volumeInfo.categories[0], this.calculatePoints()).subscribe(response => {
       console.log(response.status);
       response.status === 202 ? this.readed = true : this.readed = false;
     });
