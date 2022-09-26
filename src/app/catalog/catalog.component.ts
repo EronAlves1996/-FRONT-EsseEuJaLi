@@ -30,7 +30,7 @@ export class CatalogComponent implements OnInit {
       for(let i = 0; i < Math.floor((searchResult.totalItems)/20); i++){
         this.totalPages.push(i+1);
       };
-      this.books = searchResult.items.filter(n => n.volumeInfo.imageLinks);
+      this.books = searchResult.items.filter(n => n.volumeInfo.pageCount && n.volumeInfo.imageLinks && n.volumeInfo.categories);
     });
   }
 
@@ -40,7 +40,7 @@ export class CatalogComponent implements OnInit {
 
   goToIndexInSearch(index: number): void {
     this.bookService.search(this.searchBook, index * 20).subscribe(searchResult=> {
-      this.books = searchResult.items.filter(n=>n.volumeInfo.imageLinks);
+      this.books = searchResult.items.filter( n => n.volumeInfo.pageCount && n.volumeInfo.imageLinks && n.volumeInfo.categories);
       this.actualPage = index + 1;
     })
   }

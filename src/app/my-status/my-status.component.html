@@ -2,18 +2,21 @@
     <h3>Usuário</h3>
     <nav class="">
         <ul class="d-flex w-25 justify-content-between m-0 p-0">
-            <li class="my-info selected" #myInfo (click)="myInfo.classList.add('selected'); readedBooks.classList.remove('selected')">Minhas informações</li>
-            <li class="readed-books" #readedBooks (click)="readedBooks.classList.add('selected'); myInfo.classList.remove('selected')">Livros Lidos</li>
+            <li class="my-info selected" #myInfo
+                (click)="myInfo.classList.add('selected'); readedBooksEl.classList.remove('selected')">Minhas informações
+            </li>
+            <li class="readed-books" #readedBooksEl
+                (click)="readedBooksEl.classList.add('selected'); myInfo.classList.remove('selected')">Livros Lidos</li>
         </ul>
     </nav>
     <hr class="m-0">
     <div *ngIf="myInfo.classList.contains('selected')">
         <p>Nome: {{user.name}}</p>
         <p>E-mail: {{user.email}}</p>
-        <p>Pontuação Total: {{user.email}}</p>
-        <p>Troféus: {{user.email}}</p>
+        <p>Pontuação Total: {{ related_points }}</p>
+        <p>Troféus: <span *ngFor="let trophy of trophys">{{trophy}}, </span></p>
     </div>
-    <div *ngIf="readedBooks.classList.contains('selected')">
+    <div *ngIf="readedBooksEl.classList.contains('selected')">
         <p>Another thing</p>
     </div>
 </div>

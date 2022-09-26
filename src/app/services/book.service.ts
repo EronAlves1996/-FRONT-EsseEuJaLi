@@ -2,6 +2,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { first, map, Observable } from 'rxjs';
 import { Search } from '../shared/book';
+import { BookReaded } from '../shared/bookReaded';
 import { User } from '../shared/user';
 import { UserServiceService } from './user-service.service';
 
@@ -43,5 +44,9 @@ export class BookService {
   }
   verifyIfIsRead(bookId: string): Observable<HttpResponse<Object>> {
     return this.http.get(this.server + "readed/" + bookId, {withCredentials:true, observe: 'response'});
+  }
+
+  getUserReadedBooks(): Observable<BookReaded[]>{
+    return this.http.get<BookReaded[]>(this.server + "readed/", {withCredentials: true});
   }
 }
